@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Home{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumotron text-center">
+            <h1>Energy in Australia</h1>
+            <h3>Explore Australia's changing energy use and production</h3>
+            <br>
+            <p><a class="btn btn-primary btn-lg" href="/" role="button">Home</a></p>
+        </div>
+        <br>
+        <br>
+
+        {% block viz %}
+        {% endblock %}
+        <br>
+        <br>
+
+        <div class="row justify-content-center">
+            <div class="col-mg-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                      <li class="page-item {% block stateproductionactive %}{% endblock %}"><a class="page-link" href="/stateproduction">Energy Production</a></li>
+                      <li class="page-item {% block consumptionindustryactive %}{% endblock %}"><a class="page-link" href="/industryconsumption">Energy Consumption by Industry</a></li>
+                      <li class="page-item {% block consumptionproductionactive %}{% endblock %}"><a class="page-link" href="/consumptionproduction">Energy Consumption vs Production</a></li>
+                      <li class="page-item {% block energydemandactive %}{% endblock %}"><a class="page-link" href="/populationconsumption">Energy Demand</a></li>
+                    </ul>
+                  </nav>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% block js %}{% endblock %}
+{% block css %}{% endblock %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</html>

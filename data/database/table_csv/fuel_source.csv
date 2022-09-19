@@ -1,0 +1,13 @@
+,fuel_id,fuel_source,renewable
+0,0,Black coal,False
+1,1,Brown coal,False
+2,2,Natural gas,False
+3,3,Oil products,False
+4,4,Other,False
+5,5,"Bagasse, wood",True
+6,6,Biogas,True
+7,7,Wind,True
+8,8,Hydro,True
+9,9,Large-scale solar PV,True
+10,10,Small-scale solar PV,True
+11,11,Geothermal,True

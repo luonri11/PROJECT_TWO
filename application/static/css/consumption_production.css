@@ -1,0 +1,40 @@
+.line {
+  fill: none;
+  stroke-width: 4px;
+}
+
+.production {
+  stroke: rgb(247, 16, 104);
+  font-size: 14px;
+}
+
+.consumption {
+  stroke: blue;
+  font-size: 14px;
+}
+
+.x {
+  font-size: 14px;
+}
+
+.text {
+  font-size: 20px;
+  text-anchor: middle;
+}
+
+.consumption-text {
+  fill: rgb(245, 248, 51);
+}
+
+.production-text {
+  fill: rgb(53, 250, 53);
+}
+
+
+.title-text {
+  font-size: 32px;
+  text-anchor: middle;
+}
+.text {
+  fill: rgb(21, 255, 0); 
+}

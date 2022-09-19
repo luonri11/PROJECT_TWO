@@ -1,0 +1,49 @@
+state_production
+-
+year_id date pk fk >- financial_year.year_id
+state pk str fk >- states.state
+fuel_id int fk - fuel_source.fuel_id
+production(gwh) float
+
+fuel_source
+-
+fuel_id int pk
+fuel_source str
+renewable bool
+
+industries
+-
+industry_id int pk
+industry str
+
+industry_consumption
+-
+year_id date pk fk >- financial_year.year_id
+state str pk fk >- states.state
+industry_id int fk >- industries.industry_id
+energy_consumption(pj) float
+
+state_consumption
+-
+year_id date pk fk >- financial_year.year_id
+state str pk fk - states.state
+population int
+gsp($_Millions) int
+energy_consumption(pj) float
+
+state_productivity
+-
+year_id date pk fk >- financial_year.year_id
+state int pk fk - states.state
+consumption_per_capita(gj/person) float
+energy_intensity(gj/$_million) float
+energy_productivity($_million/pj) float
+
+states
+-
+state int pk
+
+financial_year
+-
+year_id int pk
+financial_year str
