@@ -9,8 +9,20 @@ import pandas as pd
 import psycopg2
 import sys
 
+
+
+app = Flask(__name__)
+
+from flask_sqlalchemy import SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+
+# Remove tracking modifications
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = sqlalchemy(app)
+
 def getview(view_name):
-    con = psycopg2.connect("host='localhost' dbname='australian_energy_db' user='postgres' password='postgres'")  
+    con = db
     cur = con.cursor()
     cur.execute(f'select * from  {view_name}')
     view = cur.fetchall()
@@ -22,16 +34,6 @@ def getview(view_name):
     cur.close()
 
     return d3_view
-
-app = Flask(__name__)
-
-# from flask_sqlalchemy import SQLAlchemy
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
-
-# # Remove tracking modifications
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# db = sqlalchemy(app)
 
 @app.route("/")
 def home():
