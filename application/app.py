@@ -2,21 +2,21 @@
 # import json
 import os
 from flask import Flask, jsonify, render_template
-from requests import session
+# from requests import session
 
-from sqlalchemy import inspect
-from sqlalchemy import create_engine
+# from sqlalchemy import inspect
+# from sqlalchemy import create_engine
 
 import psycopg2
-import sys
+# import sys
 
 app = Flask(__name__)
 
-# user = 'typurkwdxvrwvj'
-# password = '57913999518e3f51b5d1c72db2370f8966ed6798f4e447f4951283656a1cf9c3'
-# host = 'ec2-34-200-205-45.compute-1.amazonaws.com'
-# port = '5432'
-# database = 'd89dik6s50rruf'
+user = 'typurkwdxvrwvj'
+password = '57913999518e3f51b5d1c72db2370f8966ed6798f4e447f4951283656a1cf9c3'
+host = 'ec2-34-200-205-45.compute-1.amazonaws.com'
+port = '5432'
+name = 'd89dik6s50rruf'
 
 from flask_sqlalchemy import SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "postgresql://postgres:postgres@localhost:5432/australian_energy_db"
@@ -27,7 +27,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 def getview(view_name):
-    con = psycopg2.connect("host='localhost' dbname='australian_energy_db' user='postgres' password='postgres'")
+    # con = psycopg2.connect("host='localhost' dbname='australian_energy_db' user='postgres' password='postgres'")
+    con = psycopg2.connect(f"host='{host}' dbname='{name}' user='{user}' password='{password}'")
     cur = con.cursor()
     cur.execute(f'select * from  {view_name}')
     view = cur.fetchall()
