@@ -9,20 +9,29 @@ import pandas as pd
 import psycopg2
 import sys
 
-
-
 app = Flask(__name__)
 
-from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+user = 'typurkwdxvrwvj'
+password = '57913999518e3f51b5d1c72db2370f8966ed6798f4e447f4951283656a1cf9c3'
+host = 'ec2-34-200-205-45.compute-1.amazonaws.com'
+port = '5432'
+database = 'd89dik6s50rruf'
 
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# from flask_sqlalchemy import SQLAlchemy
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
-db = sqlalchemy(app)
+# # Remove tracking modifications
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# db = sqlalchemy(app)
 
 def getview(view_name):
-    con = db
+    con = psycopg2.connect(database=database,
+    user=user,
+    password=password,
+    host=host,
+    port=port)
+    
     cur = con.cursor()
     cur.execute(f'select * from  {view_name}')
     view = cur.fetchall()
