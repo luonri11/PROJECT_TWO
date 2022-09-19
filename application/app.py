@@ -28,7 +28,8 @@ db = SQLAlchemy(app)
 
 def getview(view_name):
     # con = psycopg2.connect("host='localhost' dbname='australian_energy_db' user='postgres' password='postgres'")
-    con = psycopg2.connect(f"host='{host}' dbname='{name}' user='{user}' password='{password}'")
+    # con = psycopg2.connect(f"host='{host}' dbname='{name}' user='{user}' password='{password}'")
+    con = psycopg2.connect(db)
     cur = con.cursor()
     cur.execute(f'select * from  {view_name}')
     view = cur.fetchall()
