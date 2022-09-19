@@ -1,29 +1,12 @@
 import json
 from flask import Flask, jsonify, render_template
-import os
-# from requests import session
+from requests import session
 import sqlalchemy
 from sqlalchemy import inspect
 from sqlalchemy import create_engine
 import pandas as pd
 import psycopg2
 import sys
-
-#################################################
-# Flask Setup
-#################################################
-app = Flask(__name__)
-#################################################
-# Database Setup
-#################################################
-
-from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
-
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
 
 def getview(view_name):
     con = psycopg2.connect("host='localhost' dbname='australian_energy_db' user='postgres' password='postgres'")  
@@ -40,6 +23,15 @@ def getview(view_name):
     return d3_view
 
 app = Flask(__name__)
+
+
+from flask_sqlalchemy import SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+
+# Remove tracking modifications
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = sqlalchemy(app)
 
 @app.route("/")
 def home():
