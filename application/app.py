@@ -1,7 +1,7 @@
 import json
 from flask import Flask, jsonify, render_template
 import os
-from requests import session
+# from requests import session
 import sqlalchemy
 from sqlalchemy import inspect
 from sqlalchemy import create_engine
