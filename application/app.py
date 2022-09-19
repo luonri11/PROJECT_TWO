@@ -1,4 +1,5 @@
 import json
+import os
 from flask import Flask, jsonify, render_template
 from requests import session
 import sqlalchemy
@@ -24,14 +25,13 @@ def getview(view_name):
 
 app = Flask(__name__)
 
+# from flask_sqlalchemy import SQLAlchemy
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
-from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+# # Remove tracking modifications
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = sqlalchemy(app)
+# db = sqlalchemy(app)
 
 @app.route("/")
 def home():
